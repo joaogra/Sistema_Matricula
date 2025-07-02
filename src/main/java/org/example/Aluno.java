@@ -18,4 +18,10 @@ public class Aluno {
         this.disciplinasCursadas.addAll(historico);
         this.planejamento.addAll(plan);
     }
+    public String getNome() { return nome;}
+    public String getMatricula() { return matricula;}
+
+    public List<String> getDisciplinasCursadas() { return disciplinasCursadas;}
+
+    public List<String> getPlanejamento() { return planejamento;}
 }
