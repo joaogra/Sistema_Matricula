@@ -13,5 +13,5 @@ public abstract class Disciplina {
 
     public int getCargaHoraria() { return cargaHoraria;}
     public String getCodigo() { return codigo;}
-    public String getNome() { return nome;}
+    public String getNome() { return nome; }
 }

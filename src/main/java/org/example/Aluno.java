@@ -23,5 +23,5 @@ public class Aluno {
 
     public List<String> getDisciplinasCursadas() { return disciplinasCursadas;}
 
-    public List<String> getPlanejamento() { return planejamento;}
+    public List<String> getPlanejamento() { return planejamento; }
 }
