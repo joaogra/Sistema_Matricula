@@ -1,6 +1,7 @@
-package org.example;
+package org.Disciplinas;
 
-import java.util.ArrayList;
+import org.example.Turma;
+
 import java.util.List;
 
 public abstract class Disciplina {
@@ -9,6 +10,7 @@ public abstract class Disciplina {
     protected final int cargaHoraria;
     protected List<Turma> turmas;
     protected List<Disciplina> preRequisitos;
+
     //lista de validadores
     public Disciplina(String nome, String codigo, int cargaHoraria, List<Turma> turmas, List<Disciplina> preRequisitos) {
         this.nome = nome;
@@ -17,6 +19,7 @@ public abstract class Disciplina {
         this.turmas = turmas;
         this.preRequisitos = preRequisitos;
     }
+    public abstract TipoDeDisciplina getTipoDisciplina();
 
     public int getCargaHoraria() { return cargaHoraria;}
     public String getCodigo() { return codigo;}

@@ -1,5 +1,7 @@
 package org.example;
 
+import org.Disciplinas.Disciplina;
+
 public class Turma {
     private String id;
     private int numVagas;

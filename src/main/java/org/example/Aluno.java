@@ -1,27 +1,29 @@
 package org.example;
 
+import org.Disciplinas.Disciplina;
+import org.Disciplinas.DisciplinaCursada;
+import org.Disciplinas.TipoDeDisciplina;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Aluno {
 
-    private String nome;
-    private String matricula;
+    private final String nome;
+    private final String matricula;
     private List<DisciplinaCursada> disciplinasCursadas = new ArrayList<>();
-    private List<Disciplina> planejamento = new ArrayList<>();
+    private Map<Disciplina, TipoDeDisciplina> planejamento;
 
-    public Aluno(String nome, String matricula, List<DisciplinaCursada> historico, List<Disciplina> plan){
+    public Aluno(String nome, String matricula, List<DisciplinaCursada> historico, Map<Disciplina, TipoDeDisciplina> planejamento) {
         this.nome = nome;
         this.matricula = matricula;
         this.disciplinasCursadas.addAll(historico);
-        this.planejamento.addAll(plan);
+        this.planejamento = planejamento;
     }
+
     public String getNome() { return nome;}
     public String getMatricula() { return matricula;}
-
     public List<DisciplinaCursada> getDisciplinasCursadas() { return disciplinasCursadas;}
-
-    public List<Disciplina> getPlanejamento() { return planejamento; }
+    public Map<Disciplina, TipoDeDisciplina> getPlanejamento() { return planejamento; }
 }

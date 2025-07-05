@@ -1,4 +1,4 @@
-package org.example;
+package org.Disciplinas;
 
 public class DisciplinaCursada {
     protected Disciplina disciplina;
