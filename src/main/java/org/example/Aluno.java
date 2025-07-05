@@ -1,18 +1,18 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Aluno {
 
     private String nome;
     private String matricula;
-    private List<String> disciplinasCursadas = new ArrayList<>();
-    private List<String> planejamento = new ArrayList<>();
+    private List<DisciplinaCursada> disciplinasCursadas = new ArrayList<>();
+    private List<Disciplina> planejamento = new ArrayList<>();
 
-    // Trocar o Array disciplinasCursadas p um "TAD" que guarda o código e a nota que o aluno teve.
-
-    public Aluno(String nome, String matricula, List<String> historico, List<String> plan){
+    public Aluno(String nome, String matricula, List<DisciplinaCursada> historico, List<Disciplina> plan){
         this.nome = nome;
         this.matricula = matricula;
         this.disciplinasCursadas.addAll(historico);
@@ -21,7 +21,7 @@ public class Aluno {
     public String getNome() { return nome;}
     public String getMatricula() { return matricula;}
 
-    public List<String> getDisciplinasCursadas() { return disciplinasCursadas;}
+    public List<DisciplinaCursada> getDisciplinasCursadas() { return disciplinasCursadas;}
 
-    public List<String> getPlanejamento() { return planejamento; }
+    public List<Disciplina> getPlanejamento() { return planejamento; }
 }
