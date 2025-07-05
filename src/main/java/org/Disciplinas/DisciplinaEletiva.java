@@ -1,6 +1,6 @@
 package org.Disciplinas;
 
-import org.example.Turma;
+import org.Turma.Turma;
 
 import java.util.List;
 

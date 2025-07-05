@@ -1,4 +1,4 @@
-package org.example;
+package org.Turma;
 
 import org.Disciplinas.Disciplina;
 
@@ -7,9 +7,9 @@ public class Turma {
     private int numVagas;
     private int numAtualAlunos;
     private Disciplina disciplina;
-    private int horario;
+    private Horario horario;
 
-    public Turma(String id, int numVagas, int numAtualAlunos, Disciplina disciplina1, int horario){
+    public Turma(String id, int numVagas, int numAtualAlunos, Disciplina disciplina1, Horario horario){
         this.id = id;
         this.numVagas = numVagas;
         this.numAtualAlunos = numAtualAlunos;
