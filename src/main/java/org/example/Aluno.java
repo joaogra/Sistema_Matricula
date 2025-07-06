@@ -2,20 +2,19 @@ package org.example;
 
 import org.Disciplinas.Disciplina;
 import org.Disciplinas.DisciplinaCursada;
-import org.Disciplinas.TipoDeDisciplina;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Aluno {
 
     private final String nome;
     private final String matricula;
+    private int creditoAtual;
     private List<DisciplinaCursada> disciplinasCursadas = new ArrayList<>();
-    private Map<Disciplina, TipoDeDisciplina> planejamento;
-
-    public Aluno(String nome, String matricula, List<DisciplinaCursada> historico, Map<Disciplina, TipoDeDisciplina> planejamento) {
+    private List<Disciplina> planejamento;
+    public Aluno(String nome, String matricula, List<DisciplinaCursada> historico, List<Disciplina> planejamento) {
+        this.creditoAtual = 0;
         this.nome = nome;
         this.matricula = matricula;
         this.disciplinasCursadas.addAll(historico);
@@ -24,6 +23,7 @@ public class Aluno {
 
     public String getNome() { return nome;}
     public String getMatricula() { return matricula;}
+    public int getCreditoAtual() { return creditoAtual;}
     public List<DisciplinaCursada> getDisciplinasCursadas() { return disciplinasCursadas;}
-    public Map<Disciplina, TipoDeDisciplina> getPlanejamento() { return planejamento; }
+    public List<Disciplina> getPlanejamento() { return planejamento; }
 }

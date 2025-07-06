@@ -8,7 +8,7 @@ public class SistemaAcademico {
     }
 
     public void matricula(Aluno aluno){
-        for(Disciplina atual : aluno.getPlanejamento().keySet() )
+        for(Disciplina atual : aluno.getPlanejamento() )
             auxMatricula(aluno, atual);
     }
 
@@ -16,7 +16,7 @@ public class SistemaAcademico {
         try {
 
         }
-        catch{
+        catch(Exception e){
 
         }
     }
