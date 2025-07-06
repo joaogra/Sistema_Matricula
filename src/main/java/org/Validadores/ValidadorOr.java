@@ -1,11 +1,13 @@
 package org.Validadores;
 
 import org.Disciplinas.Disciplina;
+import org.Exceptions.MatriculaException;
+import org.Exceptions.PreRequisitoNaoCumpridoException;
 import org.example.Aluno;
 
 public class ValidadorOr implements ValidadorPreRequisito {
     @Override
-    public boolean validar(Aluno aluno, Disciplina disciplina){
+    public boolean validar(Aluno aluno, Disciplina disciplina) throws MatriculaException {
         ValidadorPreRequisito validador = new ValidadorSimples();
 
         if(disciplina.getPreRequisitos().isEmpty()){//Verifica se a disciplina tem algum pré-requisito
@@ -17,7 +19,7 @@ public class ValidadorOr implements ValidadorPreRequisito {
                 return true;
             }
         }
-        return false;//throws exception
+        throw new PreRequisitoNaoCumpridoException("A disciplina " + disciplina.getNome() + " não foi aprovada por falta de pré-requisitos!");
     }
 
 }

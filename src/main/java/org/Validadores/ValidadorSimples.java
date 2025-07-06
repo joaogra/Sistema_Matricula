@@ -4,7 +4,7 @@ import org.Disciplinas.Disciplina;
 import org.Disciplinas.DisciplinaCursada;
 import org.example.Aluno;
 
-public class ValidadorSimples implements ValidadorPreRequisito{
+public class ValidadorSimples implements ValidadorPreRequisito {
     @Override
     public boolean validar(Aluno aluno, Disciplina preRequisito) {
         for(DisciplinaCursada disciplinaCursada : aluno.getDisciplinasCursadas()){
@@ -12,7 +12,7 @@ public class ValidadorSimples implements ValidadorPreRequisito{
                 return true;
             }
         }
-        return false;//throws exception quando a classe de excessoes estiver pronta
+        return false;
     }
 
 }
