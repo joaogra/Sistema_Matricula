@@ -10,15 +10,22 @@ public abstract class Disciplina {
     protected final int cargaHoraria;
     protected List<Turma> turmas;
     protected List<Disciplina> preRequisitos;
+    protected  List<Disciplina> coRequisitos;
 
     //lista de validadores
-    public Disciplina(String nome, String codigo, int cargaHoraria, List<Turma> turmas, List<Disciplina> preRequisitos) {
+    public Disciplina(String nome, String codigo, int cargaHoraria, List<Disciplina> preRequisitos,  Disciplina coRequisitos) {
         this.nome = nome;
         this.codigo = codigo;
         this.cargaHoraria = cargaHoraria;
-        this.turmas = turmas;
         this.preRequisitos = preRequisitos;
+        this.coRequisitos = coRequisitos;
     }
+
+    public Disciplina(){
+
+
+    }
+
     public abstract TipoDeDisciplina getTipoDisciplina();
 
     public int getCargaHoraria() { return cargaHoraria;}
@@ -26,4 +33,5 @@ public abstract class Disciplina {
     public String getNome() { return nome; }
     public List<Turma> getTurmas() { return turmas; }
     public List<Disciplina> getPreRequisitos() { return preRequisitos; }
+    public List<Disciplina> getCoRequisitos(){ return coRequisitos; }
 }
