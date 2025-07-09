@@ -1,6 +1,7 @@
 package org.Validadores;
 
 import org.Disciplinas.Disciplina;
+import org.Disciplinas.DisciplinaCursada;
 import org.Exceptions.MatriculaException;
 import org.Exceptions.PreRequisitoNaoCumpridoException;
 import org.example.Aluno;
@@ -15,11 +16,13 @@ public class ValidadorOr implements ValidadorPreRequisito {
         }
 
         for(Disciplina preRequisito : disciplina.getPreRequisitos()){
-            if(validador.validar(aluno, preRequisito)){
-                return true;
+            for(DisciplinaCursada disciplinaCursada : aluno.getDisciplinasCursadas()){
+                if(disciplinaCursada.getDisciplina().getCodigo().equals(preRequisito.getCodigo()) && disciplinaCursada.getNota() >= 60){//Verifica se o aluno tem o pré-requisito
+                    return true;
+                }
             }
         }
-        throw new PreRequisitoNaoCumpridoException("A disciplina " + disciplina.getNome() + " não foi aprovada por falta de pré-requisitos!");
+        throw new PreRequisitoNaoCumpridoException("O aluno " + aluno.getNome() + " nao nenhum dos pre-requisitos para a disciplina " + disciplina.getNome() + "!");
     }
 
 }

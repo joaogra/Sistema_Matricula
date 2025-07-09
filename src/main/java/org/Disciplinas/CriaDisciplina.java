@@ -84,6 +84,6 @@ public class CriaDisciplina {
         listaDisciplinas.put("UNI002", InglesII);
         Disciplina LibrasII = new DisciplinaOptativa("LIbras Instrumental II", "UNI016", 4, List.of(LibrasI), new DisciplinaObrigatoria());
         listaDisciplinas.put("UNI016", LibrasII);
-
     }
- }
+    public Map<String, Disciplina> getListaDisciplinas() { return listaDisciplinas;}
+}

@@ -17,4 +17,22 @@ public class Turma {
         this.horario=horario;
     }
 
+    public Disciplina getDisciplina() {
+        return disciplina;
+    }
+
+    public Horario getHorario() {
+        return horario;
+    }
+
+    public int getNumAtualAlunos() {
+        return numAtualAlunos;
+    }
+
+    public int getNumVagas() {
+        return numVagas;
+    }
+    public boolean verificaVagas(){
+        return numAtualAlunos == numVagas;
+    }
 }
