@@ -1,15 +1,24 @@
 package org.Disciplinas;
 
 
+import org.Turma.DiaSemana;
+import org.Turma.Horario;
+import org.Turma.Turma;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CriaDisciplina {
+import static org.Turma.DiaSemana.QUINTA;
+import static org.Turma.DiaSemana.SEGUNDA;
+
+
+public class CriaDados {
     private Map<String,Disciplina> listaDisciplinas= new HashMap<>();
 
-    public CriaDisciplina(){
+
+    public CriaDados(){
         Disciplina algoritmoPratica = new DisciplinaObrigatoria("Algotimos Pŕatica", "DC5199", 2, new ArrayList<Disciplina>(), new DisciplinaObrigatoria());
         listaDisciplinas.put("DC5199",algoritmoPratica);
         Disciplina algoritmo = new DisciplinaObrigatoria("Algotimos", "DCC199", 4, new ArrayList<Disciplina>(), algoritmoPratica);
@@ -84,6 +93,9 @@ public class CriaDisciplina {
         listaDisciplinas.put("UNI002", InglesII);
         Disciplina LibrasII = new DisciplinaOptativa("LIbras Instrumental II", "UNI016", 4, List.of(LibrasI), new DisciplinaObrigatoria());
         listaDisciplinas.put("UNI016", LibrasII);
+        Turma AlgA = new Turma("A",3,0,algoritmo, new Horario(List.of(SEGUNDA,QUINTA), 8));
+        algoritmo.getTurmas().add(AlgA);
+        Turma AlgB = new Turma("B", 3, 0 , algoritmo, new Horario(List.of(SEGUNDA,QUINTA),10));
 
     }
  }
