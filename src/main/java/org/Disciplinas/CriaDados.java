@@ -10,8 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.Turma.DiaSemana.QUINTA;
-import static org.Turma.DiaSemana.SEGUNDA;
+import static org.Turma.DiaSemana.*;
 
 
 public class CriaDados {
@@ -96,6 +95,67 @@ public class CriaDados {
         Turma AlgA = new Turma("A",3,0,algoritmo, new Horario(List.of(SEGUNDA,QUINTA), 8));
         algoritmo.getTurmas().add(AlgA);
         Turma AlgB = new Turma("B", 3, 0 , algoritmo, new Horario(List.of(SEGUNDA,QUINTA),10));
+        algoritmo.getTurmas().add(AlgB);
+        Turma AlgC = new Turma("C", 3, 0, algoritmo, new Horario(List.of(SEGUNDA,QUINTA),14));
+        algoritmo.getTurmas().add(AlgC);
+        Turma licfA = new Turma("A", 3, 0, LICF, new Horario(List.of(SEGUNDA), 14));
+        LICF.getTurmas().add(licfA);
+        Turma licfB = new Turma("B",3,0,LICF, new Horario(List.of(QUARTA),14));
+        LICF.getTurmas().add(licfB);
+        Turma licfC = new Turma("C", 3, 0,LICF, new Horario(List.of(TERCA),10));
+        LICF.getTurmas().add(licfC);
+        Turma CalculoA = new Turma("A",3,0,Calculo1,new Horario(List.of(QUARTA,SEXTA),8));
+        Calculo1.getTurmas().add(CalculoA);
+        Turma CalculoB = new Turma("B", 3, 0, Calculo1, new Horario(List.of(QUARTA,SEXTA),10));
+        Calculo1.getTurmas().add(CalculoB);
+        Turma CalculoC = new Turma("C", 3, 0, Calculo1, new Horario(List.of(QUARTA,SEXTA),14));
+        Calculo1.getTurmas().add(CalculoC);
+        Turma QuimFundA = new Turma ("A", 3, 0, QuimicaF, new Horario(List.of(SEGUNDA,QUINTA),10));
+        QuimicaF.getTurmas().add(QuimFundA);
+        Turma QuimFundB = new Turma ("B", 3, 0, QuimicaF, new Horario(List.of(SEGUNDA,QUINTA),14));
+        QuimicaF.getTurmas().add(QuimFundB);
+        Turma QuimFundC = new Turma ("C", 3, 0, QuimicaF, new Horario(List.of(SEGUNDA,QUINTA),16));
+        QuimicaF.getTurmas().add(QuimFundC);
+        Turma AlgIIA = new Turma("A", 2, 0, AlgoritmoII, new Horario(List.of(QUARTA,SEXTA),16));
+        AlgoritmoII.getTurmas().add(AlgIIA);
+        Turma AlgIIB = new Turma("B", 3, 0 , AlgoritmoII, new Horario(List.of(QUARTA,SEXTA), 19));
+        AlgoritmoII.getTurmas().add(AlgIIB);
+        Turma AlgIIC = new Turma("C", 3, 0 , AlgoritmoII, new Horario(List.of(QUARTA,SEXTA), 21));
+        AlgoritmoII.getTurmas().add(AlgIIC);
+        Turma IntroEstatA = new Turma("A", 3, 0, IntroEstatistica, new Horario(List.of(TERCA, QUINTA), 10));
+        IntroEstatistica.getTurmas().add(IntroEstatA);
+        Turma IntroEstatB = new Turma("B", 2, 0, IntroEstatistica, new Horario(List.of(TERCA, QUINTA), 16));
+        IntroEstatistica.getTurmas().add(IntroEstatB);
+        Turma IntroEstatC = new Turma("C", 1, 0, IntroEstatistica, new Horario(List.of(TERCA, QUINTA), 19));
+        IntroEstatistica.getTurmas().add(IntroEstatC);
+        Turma LabFisica1A = new Turma("A", 3, 0, LabFisicaI, new Horario(List.of(SEGUNDA),16));
+        LabFisicaI.getTurmas().add(LabFisica1A);
+        Turma LabFisica1B = new Turma("B", 1, 0, LabFisicaI, new Horario(List.of(SEGUNDA),14));
+        LabFisicaI.getTurmas().add(LabFisica1B);
+        Turma LabFisica1C = new Turma("C", 2, 0, LabFisicaI, new Horario(List.of(QUINTA),14));
+        LabFisicaI.getTurmas().add(LabFisica1C);
+        Turma EDA = new Turma("A", 3,0, EstruturaDeDados, new Horario(List.of(QUARTA,SEXTA),14));
+        EstruturaDeDados.getTurmas().add(EDA);
+        Turma EDB = new Turma("B", 3,0, EstruturaDeDados, new Horario(List.of(QUARTA,SEXTA),16));
+        EstruturaDeDados.getTurmas().add(EDB);
+        Turma EDC = new Turma("C", 2, 0, EstruturaDeDados, new Horario(List.of(QUARTA,SEXTA), 19));
+        EstruturaDeDados.getTurmas().add(EDC);
+        Turma CircuitosDigA = new Turma("A", 2, 0, CircuitosDigitais, new Horario(List.of(TERCA,QUINTA), 16));
+        CircuitosDigitais.getTurmas().add(CircuitosDigA);
+        Turma CircuitosDigB = new Turma("B", 2, 0, CircuitosDigitais, new Horario(List.of(TERCA,QUINTA),19));
+        CircuitosDigitais.getTurmas().add(CircuitosDigB);
+        Turma CircuitosDigC = new Turma("C", 3, 0, CircuitosDigitais, new Horario(List.of(TERCA,QUINTA),21));
+        CircuitosDigitais.getTurmas().add(CircuitosDigC);
+        Turma ITNA = new Turma("A", 2, 0, ITN, new Horario(List.of(QUARTA, SEXTA), 10));
+        ITN.getTurmas().add(ITNA);
+        Turma ITNB = new Turma("B", 1, 0, ITN, new Horario(List.of(QUARTA, SEXTA), 8));
+        ITN.getTurmas().add(ITNB);
+        Turma ITNC = new Turma("C", 2, 0, ITN, new Horario(List.of(QUARTA, SEXTA), 14));
+        ITN.getTurmas().add(ITNC);
+        Turma WebDevA = new Turma("A", 3, 0, WebDev, new Horario(List.of(TERCA), 14));
+        WebDev.getTurmas().add(WebDevA);
+        Turma WebDevB = new Turma("B", 2, 0 , WebDev, new Horario(List.of(QUARTA), 14));
+        WebDev.getTurmas().add(WebDevB);
 
     }
  }
