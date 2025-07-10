@@ -39,20 +39,20 @@ public abstract class Disciplina {
     }
 
     private void preencheValidadores(){
-        validadores.add(new ValidadorSimples());
-        validadores.add(new ValidadorAnd());
-        validadores.add(new ValidadorOr());
         validadores.add(new ValidadorCorrequisitos());
-        //validadores.add(new ValidadorCreditosMinimos());
-        //validadores.add(new ValidadorSimples());
+        if(preRequisitos.isEmpty()){ return;}
+        if(preRequisitos.size() == 1) {
+            validadores.add(new ValidadorSimples());
+        }
+        else {
+            validadores.add(new ValidadorAnd());
+        }
 
     }
-    public boolean validarTodos(Aluno aluno, Disciplina disciplina) throws MatriculaException {
+    public void validarTodos(Aluno aluno, Disciplina disciplina) throws MatriculaException {
         for(ValidadorPreRequisito validador : validadores){
-            if(validador.validar(aluno,disciplina)){
-                return false;
-            }
+            validador.validar(aluno,disciplina);
         }
-        return true;
+
     }
 }

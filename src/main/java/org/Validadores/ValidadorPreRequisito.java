@@ -5,5 +5,5 @@ import org.example.Aluno;
 import org.Disciplinas.Disciplina;
 
 public interface ValidadorPreRequisito {
-    boolean validar(Aluno aluno, Disciplina disciplina) throws MatriculaException;
+    void validar(Aluno aluno, Disciplina disciplina) throws MatriculaException;
 }

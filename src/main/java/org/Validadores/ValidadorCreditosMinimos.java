@@ -6,10 +6,9 @@ import org.example.Aluno;
 
 public class ValidadorCreditosMinimos implements ValidadorPreRequisito{
     @Override
-    public boolean validar(Aluno aluno, Disciplina disciplina)throws MatriculaException {
+    public void validar(Aluno aluno, Disciplina disciplina)throws MatriculaException {
         if(aluno.getCreditoAtual() < 10){//10 é o valor de creditos minimos pode trocar esse valor depois
             throw new MatriculaException("O aluno " + aluno.getNome() + " não possui a quantidade mínima de créditos necessária!");
         }
-        return true;
     }
 }

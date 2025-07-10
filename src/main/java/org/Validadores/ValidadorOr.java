@@ -8,17 +8,12 @@ import org.example.Aluno;
 
 public class ValidadorOr implements ValidadorPreRequisito {
     @Override
-    public boolean validar(Aluno aluno, Disciplina disciplina) throws MatriculaException {
-        ValidadorPreRequisito validador = new ValidadorSimples();
-
-        if(disciplina.getPreRequisitos().isEmpty()){//Verifica se a disciplina tem algum pré-requisito
-            return true;
-        }
+    public void validar(Aluno aluno, Disciplina disciplina) throws MatriculaException {
 
         for(Disciplina preRequisito : disciplina.getPreRequisitos()){
             for(DisciplinaCursada disciplinaCursada : aluno.getDisciplinasCursadas()){
                 if(disciplinaCursada.getDisciplina().getCodigo().equals(preRequisito.getCodigo()) && disciplinaCursada.getNota() >= 60){//Verifica se o aluno tem o pré-requisito
-                    return true;
+                    return;
                 }
             }
         }

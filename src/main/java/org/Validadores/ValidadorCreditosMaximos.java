@@ -6,10 +6,9 @@ import org.example.Aluno;
 
 public class ValidadorCreditosMaximos implements ValidadorPreRequisito{
     @Override
-    public boolean validar(Aluno aluno, Disciplina disciplina)throws MatriculaException {
+    public void validar(Aluno aluno, Disciplina disciplina)throws MatriculaException {
         if(aluno.getCreditoAtual() > 10){//10 é o valor de creditos maximo pode trocar esse valor depois
             throw new MatriculaException("O aluno " + aluno.getNome() + " não possui a quantidade maxima de créditos necessária!");
         }
-        return true;
     }
 }
