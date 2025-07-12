@@ -3,7 +3,7 @@ package org.Validadores;
 import org.Disciplinas.Disciplina;
 import org.Exceptions.CoRequisitoNaoAtendidoException;
 import org.Turma.Turma;
-import org.example.Aluno;
+import org.Dados.Aluno;
 
 public class ValidadorCorrequisitos implements ValidadorPreRequisito{
     @Override

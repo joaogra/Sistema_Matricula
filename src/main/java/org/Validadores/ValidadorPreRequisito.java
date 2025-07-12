@@ -1,7 +1,7 @@
 package org.Validadores;
 
 import org.Exceptions.MatriculaException;
-import org.example.Aluno;
+import org.Dados.Aluno;
 import org.Disciplinas.Disciplina;
 
 public interface ValidadorPreRequisito {

@@ -2,7 +2,7 @@ package org.Validadores;
 
 import org.Disciplinas.Disciplina;
 import org.Exceptions.MatriculaException;
-import org.example.Aluno;
+import org.Dados.Aluno;
 
 public class ValidadorCreditosMinimos implements ValidadorPreRequisito{
     @Override

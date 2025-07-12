@@ -1,7 +1,8 @@
-package org.example;
+package org.Dados;
 
 import org.Disciplinas.DisciplinaCursada;
 import org.Exceptions.CargaHorariaExcedidaException;
+import org.Exceptions.MatriculaException;
 import org.Turma.Turma;
 
 import java.util.ArrayList;
@@ -35,9 +36,14 @@ public class Aluno {
         this.creditoAtual += somador;
     }
 
-    public void verificaCargaMaxima()throws CargaHorariaExcedidaException {
-        if(creditoAtual > cargaMaxima) {
-            throw new CargaHorariaExcedidaException("Carga horaria excedida!");
+    public void verificaCargaMaxima(int cargaHoraria)throws CargaHorariaExcedidaException {
+        if(creditoAtual + cargaHoraria > cargaMaxima) {
+            throw new CargaHorariaExcedidaException();
+        }
+    }
+    public void verificaCargaMinima() throws MatriculaException {
+        if(creditoAtual < cargaMinima) {
+            throw new MatriculaException("Não foi cumprida a quantidade minima de creditos!" + "\nNenhuma matricula foi aceita!");
         }
     }
 }

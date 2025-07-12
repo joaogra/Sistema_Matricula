@@ -3,7 +3,7 @@ package org.Validadores;
 import org.Disciplinas.DisciplinaCursada;
 import org.Exceptions.MatriculaException;
 import org.Exceptions.PreRequisitoNaoCumpridoException;
-import org.example.Aluno;
+import org.Dados.Aluno;
 import org.Disciplinas.Disciplina;
 
 public class ValidadorAnd implements ValidadorPreRequisito{
@@ -22,6 +22,5 @@ public class ValidadorAnd implements ValidadorPreRequisito{
                 throw new PreRequisitoNaoCumpridoException("O aluno " + aluno.getNome() + " nao possui o pre-requisito " + preRequisito.getNome() + " para a disciplina " + disciplina.getNome() + "!");
             }
         }
-        //System.out.println("A disciplina " + disciplina.getNome() + " aprovada com sucesso!");
     }
 }

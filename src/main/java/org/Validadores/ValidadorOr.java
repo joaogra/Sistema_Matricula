@@ -4,7 +4,7 @@ import org.Disciplinas.Disciplina;
 import org.Disciplinas.DisciplinaCursada;
 import org.Exceptions.MatriculaException;
 import org.Exceptions.PreRequisitoNaoCumpridoException;
-import org.example.Aluno;
+import org.Dados.Aluno;
 
 public class ValidadorOr implements ValidadorPreRequisito {
     @Override

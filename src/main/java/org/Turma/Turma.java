@@ -19,6 +19,8 @@ public class Turma {
         this.horario=horario;
     }
 
+    public String getId() { return id;}
+
     public Disciplina getDisciplina() {
         return disciplina;
     }
@@ -27,16 +29,9 @@ public class Turma {
         return horario;
     }
 
-    public int getNumAtualAlunos() {
-        return numAtualAlunos;
-    }
-
-    public int getNumVagas() {
-        return numVagas;
-    }
-    public void verificaVagas()throws GerenciamentoVagasException {
+    public void verificaVagasDisponiveis()throws GerenciamentoVagasException {
         if(numAtualAlunos == numVagas){
-            throw new TurmaCheiaException("");
+            throw new TurmaCheiaException("Não há vagas para essa turma!" + "\n A matricula na turma " + disciplina.getNome() + id + " foi rejeitada!");
         }
     }
 }
