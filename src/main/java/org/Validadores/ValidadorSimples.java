@@ -13,7 +13,7 @@ public class ValidadorSimples implements ValidadorPreRequisito {
                 return;
             }
         }
-        throw new PreRequisitoNaoCumpridoException("O aluno " + aluno.getNome() + " nao possui o pre-requisito " + disciplina.getPreRequisitos().getFirst().getNome());
+        throw new PreRequisitoNaoCumpridoException("o aluno nao possui o pre-requisito!");
     }
 
 }

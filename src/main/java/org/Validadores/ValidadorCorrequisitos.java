@@ -13,6 +13,6 @@ public class ValidadorCorrequisitos implements ValidadorPreRequisito{
                 return;
             }
         }
-        throw new CoRequisitoNaoAtendidoException("O aluno nao possui o corequisito " + disciplina.getCoRequisito().getNome() + " para a disciplina " + disciplina.getNome());
+        throw new CoRequisitoNaoAtendidoException("o aluno nao possui o corequisito!");
     }
 }

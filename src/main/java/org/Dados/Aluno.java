@@ -17,17 +17,16 @@ public class Aluno {
     private int creditoAtual;
     private List<DisciplinaCursada> disciplinasCursadas = new ArrayList<>();
     private List<Turma> planejamento;
-    public Aluno(String nome, String matricula, List<DisciplinaCursada> historico) {
+    public Aluno(String nome, String matricula, List<DisciplinaCursada> historico,int cargaMaxima, int cargaMinima) {
         this.creditoAtual = 0;
         this.nome = nome;
         this.matricula = matricula;
         this.disciplinasCursadas.addAll(historico);
-        this.cargaMaxima = 10;
-        this.cargaMinima = 4;
+        this.cargaMaxima = cargaMaxima;
+        this.cargaMinima = cargaMinima;
     }
 
     public String getNome() { return nome;}
-    public String getMatricula() { return matricula;}
     public int getCreditoAtual() { return creditoAtual;}
     public List<DisciplinaCursada> getDisciplinasCursadas() { return disciplinasCursadas;}
     public List<Turma> getPlanejamento() { return planejamento; }
@@ -38,7 +37,7 @@ public class Aluno {
 
     public void verificaCargaMaxima(int cargaHoraria)throws CargaHorariaExcedidaException {
         if(creditoAtual + cargaHoraria > cargaMaxima) {
-            throw new CargaHorariaExcedidaException();
+            throw new CargaHorariaExcedidaException("carga horaria maxima excedida!");
         }
     }
     public void verificaCargaMinima() throws MatriculaException {

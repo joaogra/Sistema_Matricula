@@ -19,7 +19,7 @@ public class ValidadorAnd implements ValidadorPreRequisito{
                 }
             }
             if (!aprovado) {
-                throw new PreRequisitoNaoCumpridoException("O aluno " + aluno.getNome() + " nao possui o pre-requisito " + preRequisito.getNome() + " para a disciplina " + disciplina.getNome() + "!");
+                throw new PreRequisitoNaoCumpridoException("O aluno nao possui todos os pre-requisitos!");
             }
         }
     }

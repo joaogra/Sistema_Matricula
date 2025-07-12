@@ -8,7 +8,9 @@ import org.Turma.DiaSemana;
 import org.Turma.Turma;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SistemaAcademico {
     public SistemaAcademico(){
@@ -20,7 +22,7 @@ public class SistemaAcademico {
                 for(DiaSemana diaTurmacadastrada: turmaEscolhida.getHorario().getHorarioSem()){
                     //verifica se a disciplina tem algum conflito de horario
                     if(diaTurma == diaTurmacadastrada && turmaEscolhida.getHorario().getInicioAula() == turma.getHorario().getInicioAula()){
-                            throw new ConflitoDeHorarioException("Houve conflito de horario entre " + turma.getDisciplina().getNome() + " e " + turmaEscolhida.getDisciplina().getNome(),turma);
+                            throw new ConflitoDeHorarioException("conflito de horario entre " + turma.getDisciplina().getNome() + " e " + turmaEscolhida.getDisciplina().getNome(),turma);
                     }
                 }
             }
@@ -29,7 +31,7 @@ public class SistemaAcademico {
 
     public void matricula(List<Aluno> alunos) throws MatriculaException {
         List <Turma> turmasCadastradas = new ArrayList<>();
-
+        Map<Turma, Exception> turmasRejeitadas = new HashMap<>();
         for(Aluno aluno : alunos){
             for(Turma turma : aluno.getPlanejamento()){
                         Disciplina disciplina = turma.getDisciplina();
@@ -44,22 +46,19 @@ public class SistemaAcademico {
                         //se passou por todos entao realiza a matricula da disciplina
                         turmasCadastradas.add(turma);
                         aluno.setCreditoAtual(disciplina.getCargaHoraria());
-                        System.out.println("A matricula na turma " + disciplina.getNome() + turma.getId() + " foi realizada com sucesso!");
+
                     }
                     //senao for possivel realizar a matricula solta uma mensagem explicando o motivo de ter falhado
-                    catch(PreRequisitoNaoCumpridoException | CoRequisitoNaoAtendidoException | TurmaCheiaException e){
-                        System.out.println(e.getMessage());
-                    }
-                    catch (CargaHorariaExcedidaException e) {
-                        System.out.println("Carga horaria excedida!" + "\nA matricula na disciplina " + disciplina.getNome() + "foi rejeitada!");
+                    catch(PreRequisitoNaoCumpridoException | CoRequisitoNaoAtendidoException | TurmaCheiaException | CargaHorariaExcedidaException e){
+                        turmasRejeitadas.put(turma, e);
                     }
                     catch(ConflitoDeHorarioException che){
-                        System.out.println(che.getMessage());
-
                         //verifica a prioridade das disciplinas
                         //se é igual descarta as duas disciplinas
                         if(turma.getDisciplina().getTipoDisciplina().getPrioridade() == che.getTurma().getDisciplina().getTipoDisciplina().getPrioridade()) {
                             turmasCadastradas.remove(che.getTurma());
+                            turmasRejeitadas.put(turma, che);
+                            turmasRejeitadas.put(che.getTurma(), che);
                         }
 
                         //se a disciplina que esta sendo validada tem prioridade
@@ -67,16 +66,23 @@ public class SistemaAcademico {
                         if(turma.getDisciplina().getTipoDisciplina().getPrioridade() > che.getTurma().getDisciplina().getTipoDisciplina().getPrioridade()) {
                             turmasCadastradas.add(turma);
                             turmasCadastradas.remove(che.getTurma());
+                            turmasRejeitadas.put(che.getTurma(), che);
                         }
                         //se a disciplina que já está matriculada tem prioridade maior
                         //então descarta a disciplina que está sendo validada
                     }
             }
             try {
+                System.out.println("Relatorio: \n Aluno: " + aluno.getNome());
                 aluno.verificaCargaMinima();
 
                 for(Turma turma : turmasCadastradas) {//passa as turmas matriculadas para as disciplinas cursadas do aluno com nota 0
                     aluno.getDisciplinasCursadas().add(new DisciplinaCursada(turma.getDisciplina(), 0));
+                    System.out.println("A matricula na turma " + turma.getDisciplina().getNome() + turma.getId() + " foi realizada com sucesso!");
+                }
+                for(Turma turma : turmasRejeitadas.keySet()) {//passa as turmas matriculadas para as disciplinas cursadas do aluno com nota 0
+                    String motivo = turmasRejeitadas.get(turma).getMessage();
+                    System.out.println("A matricula na turma " + turma.getDisciplina().getNome() + turma.getId() + " foi rejeitada devido a " + motivo);
                 }
             }
             //se o aluno nao tem a quantidade minima de creditos nao matricula em nenhuma das disciplinas

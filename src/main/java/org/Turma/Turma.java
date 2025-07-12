@@ -31,7 +31,7 @@ public class Turma {
 
     public void verificaVagasDisponiveis()throws GerenciamentoVagasException {
         if(numAtualAlunos == numVagas){
-            throw new TurmaCheiaException("Não há vagas para essa turma!" + "\n A matricula na turma " + disciplina.getNome() + id + " foi rejeitada!");
+            throw new TurmaCheiaException("não há vagas para essa turma!");
         }
     }
 }

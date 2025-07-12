@@ -17,7 +17,7 @@ public class ValidadorOr implements ValidadorPreRequisito {
                 }
             }
         }
-        throw new PreRequisitoNaoCumpridoException("O aluno " + aluno.getNome() + " nao nenhum dos pre-requisitos para a disciplina " + disciplina.getNome() + "!");
+        throw new PreRequisitoNaoCumpridoException("o aluno nao nenhum dos pre-requisitos para a disciplina!");
     }
 
 }
