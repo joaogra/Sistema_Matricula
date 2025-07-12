@@ -10,7 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.Turma.DiaSeman
+import static org.Turma.DiaSemana.*;
+
 
 public class CriaDados {
     private Map<String,Disciplina> listaDisciplinas= new HashMap<>();
