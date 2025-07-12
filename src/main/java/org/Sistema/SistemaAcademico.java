@@ -48,10 +48,7 @@ public class SistemaAcademico {
                         aluno.setCreditoAtual(disciplina.getCargaHoraria());
 
                     }
-                    //senao for possivel realizar a matricula solta uma mensagem explicando o motivo de ter falhado
-                    catch(PreRequisitoNaoCumpridoException | CoRequisitoNaoAtendidoException | GerenciamentoVagasException | CargaHorariaExcedidaException e){
-                        turmasRejeitadas.put(turma, e);
-                    }
+
                     catch(ConflitoDeHorarioException che){
                         //verifica a prioridade das disciplinas
                         //se é igual descarta as duas disciplinas
@@ -71,10 +68,15 @@ public class SistemaAcademico {
                         //se a disciplina que já está matriculada tem prioridade maior
                         //então descarta a disciplina que está sendo validada
                     }
+
+                    //senao for possivel realizar a matricula solta uma mensagem explicando o motivo de ter falhado
+                    catch(MatriculaException e){
+                        turmasRejeitadas.put(turma, e);
+                    }
             }
-            try {
+            //try {
                 System.out.println("Relatorio: \n Aluno: " + aluno.getNome());
-                aluno.verificaCargaMinima();
+                //aluno.verificaCargaMinima();
 
                 for(Turma turma : turmasCadastradas) {//passa as turmas matriculadas para as disciplinas cursadas do aluno com nota 0
                     aluno.getDisciplinasCursadas().add(new DisciplinaCursada(turma.getDisciplina(), 0));
@@ -84,17 +86,17 @@ public class SistemaAcademico {
                     String motivo = turmasRejeitadas.get(turma).getMessage();
                     System.out.println("A matricula na turma " + turma.getDisciplina().getNome() + turma.getId() + " foi rejeitada devido a " + motivo);
                 }
-            }
+            //}
             //se o aluno nao tem a quantidade minima de creditos nao matricula em nenhuma das disciplinas
-             catch(CargaHorariaExcedidaException m){
-                System.out.println(m.getMessage());
-            }
-            finally {
-                //limpa a lista de turmas e o planejamento do aluno
-                turmasCadastradas.clear();
-                turmasRejeitadas.clear();
-                aluno.getPlanejamento().clear();
-            }
+//             catch(CargaHorariaExcedidaException m){
+//                System.out.println(m.getMessage());
+//            }
+//            finally {
+//                //limpa a lista de turmas e o planejamento do aluno
+//                turmasCadastradas.clear();
+//                turmasRejeitadas.clear();
+//                aluno.getPlanejamento().clear();
+//            }
         }
     }
 }

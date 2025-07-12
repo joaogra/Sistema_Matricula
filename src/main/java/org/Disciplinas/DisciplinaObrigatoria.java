@@ -11,7 +11,7 @@ public class DisciplinaObrigatoria extends Disciplina{
     }
 
    public DisciplinaObrigatoria() {
-
+        this.codigo = " ";
    }
     @Override
     public TipoDeDisciplina getTipoDisciplina(){ return TipoDeDisciplina.OBRIGATORIA; }

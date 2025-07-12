@@ -8,6 +8,7 @@ import org.Turma.Turma;
 import org.Validadores.*;
 import org.Dados.Aluno;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Disciplina {
@@ -28,6 +29,8 @@ public abstract class Disciplina {
         this.cargaHoraria = cargaHoraria;
         this.preRequisitos = preRequisitos;
         this.coRequisito = coRequisito;
+        this.validadores = new ArrayList<ValidadorPreRequisito>();
+        this.turmas = new ArrayList<>();
         preencheValidadores();
     }
 
@@ -55,7 +58,7 @@ public abstract class Disciplina {
         }
 
     }
-    public void validarTodos(Aluno aluno, Disciplina disciplina) throws PreRequisitoNaoCumpridoException, CoRequisitoNaoAtendidoException {
+    public void validarTodos(Aluno aluno, Disciplina disciplina) throws MatriculaException {
         for(ValidadorPreRequisito validador : validadores){
             validador.validar(aluno,disciplina);
         }

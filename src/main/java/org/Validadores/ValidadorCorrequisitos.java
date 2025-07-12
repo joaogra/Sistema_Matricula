@@ -8,6 +8,9 @@ import org.Dados.Aluno;
 public class ValidadorCorrequisitos implements ValidadorPreRequisito{
     @Override
     public void validar(Aluno aluno, Disciplina disciplina) throws CoRequisitoNaoAtendidoException {
+        if(disciplina.getCoRequisito().getCodigo().equals(" ")){
+            return;
+        }
         for(Turma disciplinaDesejadas : aluno.getPlanejamento()){
             if(disciplinaDesejadas.getDisciplina().getCodigo().equals(disciplina.getCoRequisito().getCodigo())){
                 return;
