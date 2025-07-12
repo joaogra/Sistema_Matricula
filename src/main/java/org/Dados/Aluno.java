@@ -40,9 +40,9 @@ public class Aluno {
             throw new CargaHorariaExcedidaException("carga horaria maxima excedida!");
         }
     }
-    public void verificaCargaMinima() throws MatriculaException {
+    public void verificaCargaMinima() throws CargaHorariaExcedidaException {
         if(creditoAtual < cargaMinima) {
-            throw new MatriculaException("Não foi cumprida a quantidade minima de creditos!" + "\nNenhuma matricula foi aceita!");
+            throw new CargaHorariaExcedidaException("Não foi cumprida a quantidade minima de creditos!" + "\nNenhuma matricula foi aceita!");
         }
     }
 }

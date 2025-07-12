@@ -5,10 +5,11 @@ import org.Exceptions.MatriculaException;
 import org.Exceptions.PreRequisitoNaoCumpridoException;
 import org.Dados.Aluno;
 import org.Disciplinas.Disciplina;
+import org.Exceptions.ValidacaoMatriculaException;
 
 public class ValidadorAnd implements ValidadorPreRequisito{
     @Override
-    public void validar(Aluno aluno, Disciplina disciplina) throws MatriculaException {
+    public void validar(Aluno aluno, Disciplina disciplina) throws PreRequisitoNaoCumpridoException {
 
         for (Disciplina preRequisito : disciplina.getPreRequisitos()) {
             boolean aprovado = false;

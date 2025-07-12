@@ -15,7 +15,7 @@ import java.util.Map;
 public class SistemaAcademico {
     public SistemaAcademico(){
     }
-    private void verificaHorario(List <Turma> turmas,Turma turmaEscolhida)throws MatriculaException{
+    private void verificaHorario(List <Turma> turmas,Turma turmaEscolhida)throws ConflitoDeHorarioException{
         for(Turma turma : turmas){
 
             for(DiaSemana diaTurma : turma.getHorario().getHorarioSem()){
@@ -29,7 +29,7 @@ public class SistemaAcademico {
         }
     }
 
-    public void matricula(List<Aluno> alunos) throws MatriculaException {
+    public void matricula(List<Aluno> alunos) {
         List <Turma> turmasCadastradas = new ArrayList<>();
         Map<Turma, Exception> turmasRejeitadas = new HashMap<>();
         for(Aluno aluno : alunos){
@@ -49,7 +49,7 @@ public class SistemaAcademico {
 
                     }
                     //senao for possivel realizar a matricula solta uma mensagem explicando o motivo de ter falhado
-                    catch(PreRequisitoNaoCumpridoException | CoRequisitoNaoAtendidoException | TurmaCheiaException | CargaHorariaExcedidaException e){
+                    catch(PreRequisitoNaoCumpridoException | CoRequisitoNaoAtendidoException | GerenciamentoVagasException | CargaHorariaExcedidaException e){
                         turmasRejeitadas.put(turma, e);
                     }
                     catch(ConflitoDeHorarioException che){
@@ -86,12 +86,13 @@ public class SistemaAcademico {
                 }
             }
             //se o aluno nao tem a quantidade minima de creditos nao matricula em nenhuma das disciplinas
-             catch(MatriculaException m){
+             catch(CargaHorariaExcedidaException m){
                 System.out.println(m.getMessage());
             }
             finally {
                 //limpa a lista de turmas e o planejamento do aluno
                 turmasCadastradas.clear();
+                turmasRejeitadas.clear();
                 aluno.getPlanejamento().clear();
             }
         }

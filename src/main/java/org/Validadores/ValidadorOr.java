@@ -5,10 +5,11 @@ import org.Disciplinas.DisciplinaCursada;
 import org.Exceptions.MatriculaException;
 import org.Exceptions.PreRequisitoNaoCumpridoException;
 import org.Dados.Aluno;
+import org.Exceptions.ValidacaoMatriculaException;
 
 public class ValidadorOr implements ValidadorPreRequisito {
     @Override
-    public void validar(Aluno aluno, Disciplina disciplina) throws MatriculaException {
+    public void validar(Aluno aluno, Disciplina disciplina) throws PreRequisitoNaoCumpridoException {
 
         for(Disciplina preRequisito : disciplina.getPreRequisitos()){
             for(DisciplinaCursada disciplinaCursada : aluno.getDisciplinasCursadas()){

@@ -1,6 +1,9 @@
 package org.Disciplinas;
 
+import org.Exceptions.CoRequisitoNaoAtendidoException;
 import org.Exceptions.MatriculaException;
+import org.Exceptions.PreRequisitoNaoCumpridoException;
+import org.Exceptions.ValidacaoMatriculaException;
 import org.Turma.Turma;
 import org.Validadores.*;
 import org.Dados.Aluno;
@@ -52,7 +55,7 @@ public abstract class Disciplina {
         }
 
     }
-    public void validarTodos(Aluno aluno, Disciplina disciplina) throws MatriculaException {
+    public void validarTodos(Aluno aluno, Disciplina disciplina) throws PreRequisitoNaoCumpridoException, CoRequisitoNaoAtendidoException {
         for(ValidadorPreRequisito validador : validadores){
             validador.validar(aluno,disciplina);
         }
