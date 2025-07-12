@@ -17,19 +17,24 @@ public class Aluno {
     private int creditoAtual;
     private List<DisciplinaCursada> disciplinasCursadas = new ArrayList<>();
     private List<Turma> planejamento;
-    public Aluno(String nome, String matricula, List<DisciplinaCursada> historico,int cargaMaxima, int cargaMinima) {
+    public Aluno(String nome, String matricula, List<DisciplinaCursada> historico,int cargaMaxima, int cargaMinima,List<Turma> planejamento) {
         this.creditoAtual = 0;
         this.nome = nome;
         this.matricula = matricula;
         this.disciplinasCursadas.addAll(historico);
         this.cargaMaxima = cargaMaxima;
         this.cargaMinima = cargaMinima;
+        this.planejamento = planejamento;
     }
 
     public String getNome() { return nome;}
     public int getCreditoAtual() { return creditoAtual;}
     public List<DisciplinaCursada> getDisciplinasCursadas() { return disciplinasCursadas;}
+
+
+
     public List<Turma> getPlanejamento() { return planejamento; }
+
 
     public void setCreditoAtual(int somador) {
         this.creditoAtual += somador;
