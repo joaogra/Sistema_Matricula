@@ -1,6 +1,8 @@
 package org.Turma;
 
 import org.Disciplinas.Disciplina;
+import org.Exceptions.GerenciamentoVagasException;
+import org.Exceptions.TurmaCheiaException;
 
 public class Turma {
     private String id;
@@ -17,4 +19,19 @@ public class Turma {
         this.horario=horario;
     }
 
+    public String getId() { return id;}
+
+    public Disciplina getDisciplina() {
+        return disciplina;
+    }
+
+    public Horario getHorario() {
+        return horario;
+    }
+
+    public void verificaVagasDisponiveis()throws GerenciamentoVagasException {
+        if(numAtualAlunos == numVagas){
+            throw new TurmaCheiaException("não há vagas para essa turma!");
+        }
+    }
 }

@@ -1,8 +1,9 @@
 package org.Validadores;
 
-import org.example.Aluno;
+import org.Exceptions.MatriculaException;
+import org.Dados.Aluno;
 import org.Disciplinas.Disciplina;
 
 public interface ValidadorPreRequisito {
-    boolean validar(Aluno aluno, Disciplina disciplina);
+    void validar(Aluno aluno, Disciplina disciplina) throws MatriculaException;
 }

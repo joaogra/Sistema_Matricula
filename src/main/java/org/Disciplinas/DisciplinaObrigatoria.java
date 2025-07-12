@@ -10,10 +10,9 @@ public class DisciplinaObrigatoria extends Disciplina{
         super(nome, codigo, cargaHoraria, preRequisitos, coRequisitos);
     }
 
-    public DisciplinaObrigatoria(){
+   public DisciplinaObrigatoria() {
 
-
-    }
+   }
     @Override
     public TipoDeDisciplina getTipoDisciplina(){ return TipoDeDisciplina.OBRIGATORIA; }
 }

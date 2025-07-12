@@ -1,29 +1,31 @@
 package org.Disciplinas;
 
+import org.Exceptions.MatriculaException;
 import org.Turma.Turma;
+import org.Validadores.*;
+import org.Dados.Aluno;
 
 import java.util.List;
 
 public abstract class Disciplina {
-    protected final String nome;
-    protected final String codigo;
-    protected final int cargaHoraria;
+    protected String nome;
+    protected String codigo;
+    protected int cargaHoraria;
     protected List<Turma> turmas;
     protected List<Disciplina> preRequisitos;
-    protected  List<Disciplina> coRequisitos;
+    protected List<ValidadorPreRequisito> validadores;
+    protected Disciplina coRequisito;
 
-    //lista de validadores
-    public Disciplina(String nome, String codigo, int cargaHoraria, List<Disciplina> preRequisitos,  Disciplina coRequisitos) {
+    public Disciplina(){
+
+    }
+    public Disciplina(String nome, String codigo, int cargaHoraria, List<Disciplina> preRequisitos,Disciplina coRequisito) {
         this.nome = nome;
         this.codigo = codigo;
         this.cargaHoraria = cargaHoraria;
         this.preRequisitos = preRequisitos;
-        this.coRequisitos = coRequisitos;
-    }
-
-    public Disciplina(){
-
-
+        this.coRequisito = coRequisito;
+        preencheValidadores();
     }
 
     public abstract TipoDeDisciplina getTipoDisciplina();
@@ -33,5 +35,27 @@ public abstract class Disciplina {
     public String getNome() { return nome; }
     public List<Turma> getTurmas() { return turmas; }
     public List<Disciplina> getPreRequisitos() { return preRequisitos; }
-    public List<Disciplina> getCoRequisitos(){ return coRequisitos; }
+
+    public Disciplina getCoRequisito() {
+        return coRequisito;
+    }
+
+    private void preencheValidadores(){
+        validadores.add(new ValidadorCorrequisitos());
+
+        if(preRequisitos.isEmpty()){ return;}
+        if(preRequisitos.size() == 1) {
+            validadores.add(new ValidadorSimples());
+        }
+        else {
+            validadores.add(new ValidadorAnd());
+        }
+
+    }
+    public void validarTodos(Aluno aluno, Disciplina disciplina) throws MatriculaException {
+        for(ValidadorPreRequisito validador : validadores){
+            validador.validar(aluno,disciplina);
+        }
+
+    }
 }

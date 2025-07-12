@@ -1,13 +1,21 @@
 package org.Turma;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Horario {
-    List<DiaSemana> horarioSem = new ArrayList<>();
+    private List<DiaSemana> horarioSem;
     int inicioAula;
     public Horario(List<DiaSemana> dia, int inicioAula){
         this.horarioSem = dia;
         this.inicioAula = inicioAula;
     }
+
+    public List<DiaSemana> getHorarioSem() {
+        return horarioSem;
+    }
+
+    public int getInicioAula() {
+        return inicioAula;
+    }
+
 }
