@@ -346,7 +346,7 @@ public class CriaDados {
 
     Turma LibrasIIA= new Turma("A", 3,0,LibrasII,new Horario(List.of(TERCA, QUINTA),10));
     LibrasII.getTurmas().add(LibrasIIA);
-    Turma LibrasIIB= new Turma("B", 3,0,LibrasII,new Horario(List.of(SEGUNDA, QUARTA),16));
+    Turma LibrasIIB= new Turma("B", 3,0,LibrasII,new Horario(List.of(SEGUNDA, QUARTA),18));
     LibrasII.getTurmas().add(LibrasIIB);
 
     }
