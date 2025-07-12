@@ -2,63 +2,58 @@ package org.example;
 
 import org.Disciplinas.CriaDisciplina;
 import org.Disciplinas.Disciplina;
+import org.Disciplinas.DisciplinaCursada;
 import org.Exceptions.*;
 import org.Turma.DiaSemana;
-import org.Turma.Horario;
 import org.Turma.Turma;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SistemaAcademico {
-    private CriaDisciplina bancoDados;
     public SistemaAcademico(){
-        this.bancoDados = new CriaDisciplina();
     }
-    private boolean verificaHorario(List <Turma> turmas,Turma turmaEscolhida)throws MatriculaException{
+    private void verificaHorario(List <Turma> turmas,Turma turmaEscolhida)throws MatriculaException{
         for(Turma turma : turmas){
 
             for(DiaSemana diaTurma : turma.getHorario().getHorarioSem()){
                 for(DiaSemana diaTurmacadastrada: turmaEscolhida.getHorario().getHorarioSem()){
 
                     if(diaTurma == diaTurmacadastrada && turmaEscolhida.getHorario().getInicioAula() == turma.getHorario().getInicioAula()){
-                            return false;
+                            throw new ConflitoDeHorarioException("Houve conflito de horario entre " + turma.getDisciplina().getNome() + " e " + turmaEscolhida.getDisciplina().getNome(),turma);
                     }
                 }
             }
         }
-        return true;
     }
 
     public void matricula(List<Aluno> alunos) throws MatriculaException {
         List <Turma> turmasCadastradas = new ArrayList<>();
         for(Aluno aluno : alunos){
-            boolean verificador = false;
             for(Turma turma : aluno.getPlanejamento()){
-                for(Disciplina disciplina : turma.getDisciplina().getPreRequisitos()){
                     try {
-                        if (disciplina.validarTodos(aluno, disciplina) && (turma.verificaVagas()) && verificaHorario(turmasCadastradas, turma)) {
-                            turmasCadastradas.add(turma);
-                            //aluno.getPlanejamento().remove(turma);remover as disciplinas no final
-                        }
-                    }
-                    catch(PreRequisitoNaoCumpridoException pNce){
+                        Disciplina disciplina = turma.getDisciplina();
+                        disciplina.validarTodos(aluno, disciplina);
+                        verificaHorario(turmasCadastradas, turma);
+                        turma.verificaVagas();
+                        aluno.verificaCargaMaxima();
+                        turmasCadastradas.add(turma);
 
                     }
-                    catch(CargaHorariaExcedidaException che){
-
+                    catch(PreRequisitoNaoCumpridoException | CoRequisitoNaoAtendidoException | TurmaCheiaException | CargaHorariaExcedidaException e){
+                        System.out.println(e.getMessage());
                     }
-                    catch(TurmaCheiaException tce){
 
-                    }
-                    catch(CoRequisitoNaoAtendidoException cnae){
-
-                    }
                     catch(ConflitoDeHorarioException che){
-
+                        System.out.println(che.getMessage());
+                        turmasCadastradas.remove(che.getTurma());
                     }
-                }
             }
+            for(Turma turma : turmasCadastradas) {//turmasCadastrdas para aluno.DisciplinasCursadas
+                aluno.getDisciplinasCursadas().add(new DisciplinaCursada(turma.getDisciplina(), 0));//inicializa a nota do aluno com 0
+            }
+            turmasCadastradas.clear();
+            aluno.getPlanejamento().clear();//remove todas as disciplinas do planejamento do aluno
         }
     }
 }

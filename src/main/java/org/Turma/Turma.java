@@ -1,6 +1,8 @@
 package org.Turma;
 
 import org.Disciplinas.Disciplina;
+import org.Exceptions.GerenciamentoVagasException;
+import org.Exceptions.TurmaCheiaException;
 
 public class Turma {
     private String id;
@@ -32,7 +34,9 @@ public class Turma {
     public int getNumVagas() {
         return numVagas;
     }
-    public boolean verificaVagas(){
-        return numAtualAlunos == numVagas;
+    public void verificaVagas()throws GerenciamentoVagasException {
+        if(numAtualAlunos == numVagas){
+            throw new TurmaCheiaException("");
+        }
     }
 }
