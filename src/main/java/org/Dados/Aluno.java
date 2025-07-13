@@ -30,9 +30,6 @@ public class Aluno {
     public String getNome() { return nome;}
     public int getCreditoAtual() { return creditoAtual;}
     public List<DisciplinaCursada> getDisciplinasCursadas() { return disciplinasCursadas;}
-
-
-
     public List<Turma> getPlanejamento() { return planejamento; }
 
 

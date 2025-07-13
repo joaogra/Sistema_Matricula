@@ -32,7 +32,7 @@ public class CriaDados {
         listaDisciplinas.put("MAT155",GASL);
         Disciplina QuimicaF = new DisciplinaObrigatoria("Quimica Fundamental", "QUI125", 4, new ArrayList<Disciplina>(), new DisciplinaObrigatoria());
         listaDisciplinas.put("QUI125",QuimicaF);
-        Disciplina LabQuim = new DisciplinaObrigatoria("Laboratória de Quimica", "QUI126", 2, new ArrayList<Disciplina>(), new DisciplinaObrigatoria());
+        Disciplina LabQuim = new DisciplinaObrigatoria("Laboratório de Quimica", "QUI126", 2, new ArrayList<Disciplina>(), new DisciplinaObrigatoria());
         listaDisciplinas.put("QUI126",LabQuim);
         Disciplina AlgoritmoII = new DisciplinaObrigatoria("AlgoritmoII", "DCC200" , 4, List.of(algoritmo, algoritmo), new DisciplinaObrigatoria());
         listaDisciplinas.put("DCC200",AlgoritmoII);

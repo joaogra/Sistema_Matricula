@@ -3,13 +3,12 @@ package org.Sistema;
 import org.Dados.Aluno;
 import org.Dados.CriaDados;
 import org.Disciplinas.DisciplinaCursada;
-import org.Disciplinas.DisciplinaObrigatoria;
-import org.Turma.Turma;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.Exceptions.*;
+
 
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -38,12 +37,11 @@ class SistemaAcademicoTest {
     public void TestaMatricula() {
         ResultadoMatricula res = new ResultadoMatricula();
         res = siga.matricula(List.of(aluno1));
-        for(Turma turma : res.getTurmasAceitas()){
-            System.out.println(turma.getDisciplina().getNome());
-        }
-        //assertEquals(List.of(banco.getListaDisciplinas().get("MAT155").getTurmas().getFirst(), banco.getListaDisciplinas().get("QUI126").getTurmas().getFirst()),res.getTurmasAceitas());
-        //assertEquals(List.of(banco.getListaDisciplinas().get("MAT156").getTurmas().getFirst()),res.getTurmasRejeitadas().keySet());
 
-        //assertEquals(true,res.getTurmasAceitas().containsAll(List.of(banco.getListaDisciplinas().get("MAT155").getTurmas().getFirst(), banco.getListaDisciplinas().get("QUI126").getTurmas().getFirst())));
+        //verifica se as turmas que foram matriculadas sao as mesmas que as esperadas
+        assertEquals(List.of(banco.getListaDisciplinas().get("MAT155").getTurmas().getFirst(), banco.getListaDisciplinas().get("QUI126").getTurmas().getFirst()),res.getTurmasAceitas());
+        //verifica se as turmas que foram rejeitadas sao as mesmas que as esperadas
+        assertEquals(Set.of(banco.getListaDisciplinas().get("MAT156").getTurmas().getFirst()),res.getTurmasRejeitadas().keySet());
+
     }
 }

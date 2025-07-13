@@ -19,11 +19,11 @@ public class ResultadoMatricula {
         return turmasRejeitadas;
     }
 
-    public void setTurmasAceitas(List <Turma> TurmasAceitas){
-        this.turmasAceitas=TurmasAceitas;
+    public void setTurmasAceitas(List <Turma> turmasAceitas){
+        this.turmasAceitas.addAll(turmasAceitas);
     }
 
     public void setTurmasRejeitadas(Map <Turma, Exception> TurmasRejeitadas){
-        this.turmasRejeitadas=TurmasRejeitadas;
+        this.turmasRejeitadas.putAll(TurmasRejeitadas);
     }
 }
