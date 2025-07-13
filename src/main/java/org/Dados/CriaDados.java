@@ -147,7 +147,7 @@ public class CriaDados {
         CircuitosDigitais.getTurmas().add(CircuitosDigB);
         Turma CircuitosDigC = new Turma("C", 3, 0, CircuitosDigitais, new Horario(List.of(TERCA,QUINTA),21));
         CircuitosDigitais.getTurmas().add(CircuitosDigC);
-        Turma ITNA = new Turma("A", 2, 0, ITN, new Horario(List.of(QUARTA, SEXTA), 10));
+        Turma ITNA = new Turma("A", 2, 2, ITN, new Horario(List.of(QUARTA, SEXTA), 10));
         ITN.getTurmas().add(ITNA);
         Turma ITNB = new Turma("B", 1, 0, ITN, new Horario(List.of(QUARTA, SEXTA), 8));
         ITN.getTurmas().add(ITNB);
@@ -159,19 +159,19 @@ public class CriaDados {
         WebDev.getTurmas().add(WebDevB);
 
 
-        Turma AlgPratA= new Turma("A", 3,0,algoritmoPratica,new Horario(List.of(TERCA),8));
+        Turma AlgPratA= new Turma("A", 2,0,algoritmoPratica,new Horario(List.of(TERCA),8));
         algoritmoPratica.getTurmas().add(AlgPratA);
         Turma AlgPratB= new Turma("B", 2,0,algoritmoPratica,new Horario(List.of(TERCA),10));
         algoritmoPratica.getTurmas().add(AlgPratB);
         Turma AlgPratC= new Turma("C", 3,0,algoritmoPratica,new Horario(List.of(QUARTA),14));
         algoritmoPratica.getTurmas().add(AlgPratC);
 
-        Turma ICEA= new Turma("A", 3,0,ICE,new Horario(List.of(SEGUNDA),10));
+        Turma ICEA= new Turma("A", 3,0,ICE,new Horario(List.of(TERCA),10));
         ICE.getTurmas().add(ICEA);
-        Turma ICEB= new Turma("B", 3,0,ICE,new Horario(List.of(TERCA),18));
+        Turma ICEB= new Turma("B", 3,0,ICE,new Horario(List.of(SEGUNDA),10));
         ICE.getTurmas().add(ICEB);
 
-        Turma GASLA= new Turma("A", 3,0,GASL,new Horario(List.of(QUARTA,SEXTA),8));
+        Turma GASLA= new Turma("A", 3,0,GASL,new Horario(List.of(QUARTA,SEXTA),10));
         GASL.getTurmas().add(GASLA);
         Turma GASLB= new Turma("B", 3,0,GASL,new Horario(List.of(TERCA,QUINTA),16));
         GASL.getTurmas().add(GASLB);

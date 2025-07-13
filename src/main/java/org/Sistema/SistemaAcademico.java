@@ -98,7 +98,7 @@ public class SistemaAcademico {
                         }
                     }
                     catch(CoRequisitoNaoAtendidoException cr){
-                        if(disciplina.getCoRequisito().getCodigo().equals(" ")) {
+                        if(!disciplina.getCoRequisito().getCodigo().equals(" ")) {
                             for (Turma turmaAceitada : turmasCadastradas) {
                                 if (turmaAceitada.getDisciplina().getCodigo().equals(disciplina.getCoRequisito().getCodigo())) {
                                     turmasCadastradas.remove(turmaAceitada);
@@ -110,8 +110,8 @@ public class SistemaAcademico {
                         turmasRejeitadas.put(turma, cr);
                     }
                     catch (TurmaCheiaException tc){
-                        if(disciplina.getCoRequisito().getCodigo().equals(" ")){
-                            for(Turma turmaAceitada : turmasCadastradas){
+                        if(!disciplina.getCoRequisito().getCodigo().equals(" ")){
+                            for(Turma turmaAceitada : new ArrayList<>(turmasCadastradas)){
                                 if(turmaAceitada.getDisciplina().getCodigo().equals(disciplina.getCoRequisito().getCodigo())){
                                     turmasCadastradas.remove(turmaAceitada);
                                     turmasRejeitadas.put(turmaAceitada, new CoRequisitoNaoAtendidoException("o aluno nao possui o corequisito!"));
