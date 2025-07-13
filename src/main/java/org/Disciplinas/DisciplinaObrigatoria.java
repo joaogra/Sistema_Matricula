@@ -11,6 +11,7 @@ public class DisciplinaObrigatoria extends Disciplina{
     }
 
    public DisciplinaObrigatoria() {
+        //Esse construtor é chamado quando uma disciplina não tem coRequisito
         this.codigo = " ";
    }
     @Override

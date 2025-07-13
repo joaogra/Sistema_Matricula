@@ -26,13 +26,13 @@ class ValidadorOrTest {
     }
 
     @Test
-    public void TestTrue(){
+    public void matriculaSeTiverPeloMenosUmPreRequisito(){
         assertDoesNotThrow(()->validadorOr.validar(aluno1,banco.getListaDisciplinas().get("MAT156")));
     }
 
     @Test
 
-    public void TestFalse(){
+    public void lançaExceptionSeNaoTiverNenhumPreRequisito(){
         assertThrows(PreRequisitoNaoCumpridoException.class,()-> {validadorOr.validar(aluno1, banco.getListaDisciplinas().get("MAT157"));});
     }
 }

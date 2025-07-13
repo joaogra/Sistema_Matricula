@@ -24,7 +24,8 @@ class TurmaTest {
 
     @Test
 
-    public void TestaTurmaCheiaException(){
+    public void testaTurmaCheiaException(){
+        //Verifica se lança a exception de turma cheia quando a turma está cheia.
         assertThrows(TurmaCheiaException.class, ()->{turmaTest.verificaVagasDisponiveis();});
     }
 

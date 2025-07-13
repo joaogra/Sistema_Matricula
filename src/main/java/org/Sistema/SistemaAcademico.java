@@ -97,18 +97,7 @@ public class SistemaAcademico {
                             turmasRejeitadas.put(turma, che);
                         }
                     }
-                    catch(CoRequisitoNaoAtendidoException cr){
-                        if(!disciplina.getCoRequisito().getCodigo().equals(" ")) {
-                            for (Turma turmaAceitada : turmasCadastradas) {
-                                if (turmaAceitada.getDisciplina().getCodigo().equals(disciplina.getCoRequisito().getCodigo())) {
-                                    turmasCadastradas.remove(turmaAceitada);
-                                    turmasRejeitadas.put(turmaAceitada, cr);
-                                    break;
-                                }
-                            }
-                        }
-                        turmasRejeitadas.put(turma, cr);
-                    }
+
                     catch (TurmaCheiaException tc){
                         if(!disciplina.getCoRequisito().getCodigo().equals(" ")){
                             for(Turma turmaAceitada : new ArrayList<>(turmasCadastradas)){
@@ -127,19 +116,19 @@ public class SistemaAcademico {
             }
 
             try {
-                System.out.println("Relatorio: \n Aluno: " + aluno.getNome());
+                System.out.println("Relatorio: \nAluno: " + aluno.getNome());
                 aluno.verificaCargaMinima();
 
                 //passa as turmas matriculadas para as disciplinas cursadas do aluno com nota 0
                 for(Turma turma : turmasCadastradas) {
                     aluno.getDisciplinasCursadas().add(new DisciplinaCursada(turma.getDisciplina(), 0));
-                    System.out.println("A matricula na turma " + turma.getDisciplina().getNome() + " " + turma.getId() + " foi realizada com sucesso!");
+                    System.out.println("A matricula na turma " + turma.getDisciplina().getNome() + "-" + turma.getId() + " foi realizada com sucesso!");
                 }
 
                 //Mostra as matriculas rejeitadas e seus respectivos motivos
                 for(Turma turma : turmasRejeitadas.keySet()) {
                     String motivo = turmasRejeitadas.get(turma).getMessage();
-                    System.out.println("A matricula na turma " + turma.getDisciplina().getNome() + " " + turma.getId() + " foi rejeitada devido a " + motivo);
+                    System.out.println("A matricula na turma " + turma.getDisciplina().getNome() + "-" + turma.getId() + " foi rejeitada devido a " + motivo);
                 }
             }
             //se o aluno nao tem a quantidade minima de creditos nao matricula em nenhuma das disciplinas

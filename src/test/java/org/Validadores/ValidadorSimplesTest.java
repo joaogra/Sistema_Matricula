@@ -27,12 +27,12 @@ class ValidadorSimplesTest {
     }
 
     @Test
-    public void TestaValidadorSimplesTrue()  {
+    public void matriculaSeTemPreRequisito()  {
         assertDoesNotThrow(()-> validadorSimples.validar(aluno1, banco.getListaDisciplinas().get("DCC200")));
     }
 
     @Test
-    public void TestaValidadorSimplesFalse(){
+    public void lançaExceptionSeNaoTemPreRequisito(){
        assertThrows(PreRequisitoNaoCumpridoException.class,()-> {validadorSimples.validar(aluno1, banco.getListaDisciplinas().get("MAT156"));});
     }
 }

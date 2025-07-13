@@ -37,13 +37,13 @@ class ValidadorCreditosMinimosTest {
     }
 
     @Test
-    public void TestTrue(){
+    public void matriculaSeTiverCreditosMinimos(){
         assertDoesNotThrow(()->validadorCreditosMinimos.validar(aluno1,banco.getListaDisciplinas().get("MAT154")));
     }
 
     @Test
 
-    public void TestFalse(){
+    public void lançaExceptionSeNaoTiverCreditosMinimos(){
         assertThrows(MatriculaException.class,()-> {validadorCreditosMinimos.validar(aluno2, banco.getListaDisciplinas().get("ICE001"));});
     }
 

@@ -29,13 +29,13 @@ class ValidadorCorrequisitosTest {
     }
 
     @Test
-    public void TestTrue(){
+    public void matricularSeAlunoPossuirCoRequisito(){
         assertDoesNotThrow(()->validadorCorrequisitos.validar(aluno1,banco.getListaDisciplinas().get("DCC199")));
     }
 
     @Test
 
-    public void TestFalse(){
+    public void lançaExceptionSeNaoTiverCoRequisito(){
         assertThrows(CoRequisitoNaoAtendidoException.class,()-> {validadorCorrequisitos.validar(aluno2, banco.getListaDisciplinas().get("DCC199"));});
     }
 

@@ -27,13 +27,19 @@ class ValidadorAndTest {
     }
 
     @Test
-    public void TestTrue(){
+    public void possuiPreRequisito(){
         assertDoesNotThrow(()->validadorAnd.validar(aluno2,banco.getListaDisciplinas().get("DCC008")));
     }
 
     @Test
 
-    public void TestFalse(){
+    public void possuiPreRequisitoMasSemNota(){
+        assertThrows(PreRequisitoNaoCumpridoException.class,()-> {validadorAnd.validar(aluno1, banco.getListaDisciplinas().get("MAT156"));});
+    }
+
+    @Test
+
+    public void naoPossuiPreRequisito(){
         assertThrows(PreRequisitoNaoCumpridoException.class,()-> {validadorAnd.validar(aluno1, banco.getListaDisciplinas().get("MAT157"));});
     }
 

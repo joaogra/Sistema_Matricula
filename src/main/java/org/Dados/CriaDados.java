@@ -26,7 +26,7 @@ public class CriaDados {
         listaDisciplinas.put("FIS122",LICF);
         Disciplina ICE = new DisciplinaObrigatoria("ICE", "ICE001", 2, new ArrayList<Disciplina>(), new DisciplinaObrigatoria());
         listaDisciplinas.put("ICE001",ICE);
-        Disciplina Calculo1 = new DisciplinaObrigatoria("Calculo1", "MAT154", 2 ,new ArrayList<Disciplina>(), new DisciplinaObrigatoria());
+        Disciplina Calculo1 = new DisciplinaObrigatoria("Calculo1", "MAT154", 4 ,new ArrayList<Disciplina>(), new DisciplinaObrigatoria());
         listaDisciplinas.put("MAT154",Calculo1);
         Disciplina GASL = new DisciplinaObrigatoria("GASL", "MAT155", 4, new ArrayList<Disciplina>(), new DisciplinaObrigatoria());
         listaDisciplinas.put("MAT155",GASL);
@@ -86,7 +86,7 @@ public class CriaDados {
         listaDisciplinas.put("FIS074", FisicaII);
         Disciplina InglesI = new DisciplinaOptativa("Lingua Inglesa Instrumental I", "UNI001", 4 , new ArrayList<Disciplina>(), new DisciplinaObrigatoria());
         listaDisciplinas.put("UNI001", InglesI);
-        Disciplina LibrasI = new DisciplinaOptativa("LIbrais Intrumental I", "UNI015", 4 , new ArrayList<Disciplina>(), new DisciplinaObrigatoria());
+        Disciplina LibrasI = new DisciplinaOptativa("LIbras Intrumental I", "UNI015", 4 , new ArrayList<Disciplina>(), new DisciplinaObrigatoria());
         listaDisciplinas.put("UNI015", LibrasI);
         Disciplina InglesII = new DisciplinaOptativa("Lingua Inglesa Intrumental II", "UNI002", 4, List.of(LibrasI), new DisciplinaObrigatoria());
         listaDisciplinas.put("UNI002", InglesII);
