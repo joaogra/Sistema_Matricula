@@ -34,4 +34,8 @@ public class Turma {
             throw new TurmaCheiaException("não há vagas para essa turma!");
         }
     }
+
+    public void setNumAtualAlunos(){
+        numAtualAlunos++;
+    }
 }

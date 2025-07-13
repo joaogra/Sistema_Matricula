@@ -7,6 +7,7 @@ import org.Exceptions.*;
 import org.Turma.DiaSemana;
 import org.Turma.Turma;
 
+import javax.xml.transform.Result;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,10 +30,13 @@ public class SistemaAcademico {
         }
     }
 
-    public void matricula(List<Aluno> alunos) {
-        List <Turma> turmasCadastradas = new ArrayList<>();
-        Map<Turma, Exception> turmasRejeitadas = new HashMap<>();
+    public ResultadoMatricula matricula(List<Aluno> alunos) {
+        ResultadoMatricula resultado = new ResultadoMatricula();
+        List <Turma> turmasCadastradas;
+        Map<Turma, Exception> turmasRejeitadas;
         for(Aluno aluno : alunos){
+            turmasCadastradas = new ArrayList<>();
+            turmasRejeitadas = new HashMap<>();
             for(Turma turma : aluno.getPlanejamento()){
                         Disciplina disciplina = turma.getDisciplina();
                     try {
@@ -45,6 +49,7 @@ public class SistemaAcademico {
 
                         //se passou por todos entao realiza a matricula da disciplina
                         turmasCadastradas.add(turma);
+                        turma.setNumAtualAlunos();
                         aluno.setCreditoAtual(disciplina.getCargaHoraria());
 
                     }
@@ -74,29 +79,34 @@ public class SistemaAcademico {
                         turmasRejeitadas.put(turma, e);
                     }
             }
-            //try {
+            try {
                 System.out.println("Relatorio: \n Aluno: " + aluno.getNome());
-                //aluno.verificaCargaMinima();
+                aluno.verificaCargaMinima();
 
                 for(Turma turma : turmasCadastradas) {//passa as turmas matriculadas para as disciplinas cursadas do aluno com nota 0
                     aluno.getDisciplinasCursadas().add(new DisciplinaCursada(turma.getDisciplina(), 0));
-                    System.out.println("A matricula na turma " + turma.getDisciplina().getNome() + turma.getId() + " foi realizada com sucesso!");
+                    System.out.println("A matricula na turma " + turma.getDisciplina().getNome() + " " + turma.getId() + " foi realizada com sucesso!");
                 }
                 for(Turma turma : turmasRejeitadas.keySet()) {//passa as turmas matriculadas para as disciplinas cursadas do aluno com nota 0
                     String motivo = turmasRejeitadas.get(turma).getMessage();
-                    System.out.println("A matricula na turma " + turma.getDisciplina().getNome() + turma.getId() + " foi rejeitada devido a " + motivo);
+                    System.out.println("A matricula na turma " + turma.getDisciplina().getNome() + " " + turma.getId() + " foi rejeitada devido a " + motivo);
                 }
-            //}
+            }
             //se o aluno nao tem a quantidade minima de creditos nao matricula em nenhuma das disciplinas
-//             catch(CargaHorariaExcedidaException m){
-//                System.out.println(m.getMessage());
-//            }
-//            finally {
-//                //limpa a lista de turmas e o planejamento do aluno
-//                turmasCadastradas.clear();
-//                turmasRejeitadas.clear();
-//                aluno.getPlanejamento().clear();
-//            }
+             catch(CargaHorariaExcedidaException m){
+                System.out.println(m.getMessage());
+            }
+            finally {
+                //limpa a lista de turmas e modifica resultado
+                List <Turma> auxTurmaCadastro;
+                auxTurmaCadastro = turmasCadastradas;
+                resultado.setTurmasAceitas(auxTurmaCadastro);
+                resultado.setTurmasRejeitadas(turmasRejeitadas);
+                turmasCadastradas.clear();
+                //turmasRejeitadas.clear();
+
+            }
         }
+    return resultado;
     }
 }
