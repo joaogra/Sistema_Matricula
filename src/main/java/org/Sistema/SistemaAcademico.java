@@ -38,11 +38,11 @@ public class SistemaAcademico {
     private void verificaCorequisitoRejeitado(Map<Turma, Exception> turmasRejeitadas, Disciplina coRequisito)
             throws CoRequisitoNaoAtendidoException {
 
-        if (coRequisito == null) return;
+        if (coRequisito.getCodigo().equals(" ")) return;
 
         for (Turma turma : turmasRejeitadas.keySet()) {
             if (turma.getDisciplina().getCodigo().equals(coRequisito.getCodigo())) {
-                throw new CoRequisitoNaoAtendidoException("Co-requisito " + coRequisito.getNome() + " foi rejeitado!");
+                throw new CoRequisitoNaoAtendidoException("o aluno nao possui o corequisito!" + coRequisito.getNome());
             }
         }
     }
@@ -98,7 +98,7 @@ public class SistemaAcademico {
                         }
                     }
                     catch(CoRequisitoNaoAtendidoException cr){
-                        if(disciplina.getCoRequisito() != null) {
+                        if(disciplina.getCoRequisito().getCodigo().equals(" ")) {
                             for (Turma turmaAceitada : turmasCadastradas) {
                                 if (turmaAceitada.getDisciplina().getCodigo().equals(disciplina.getCoRequisito().getCodigo())) {
                                     turmasCadastradas.remove(turmaAceitada);
@@ -110,7 +110,7 @@ public class SistemaAcademico {
                         turmasRejeitadas.put(turma, cr);
                     }
                     catch (TurmaCheiaException tc){
-                        if(disciplina.getCoRequisito() != null){
+                        if(disciplina.getCoRequisito().getCodigo().equals(" ")){
                             for(Turma turmaAceitada : turmasCadastradas){
                                 if(turmaAceitada.getDisciplina().getCodigo().equals(disciplina.getCoRequisito().getCodigo())){
                                     turmasCadastradas.remove(turmaAceitada);
@@ -144,16 +144,21 @@ public class SistemaAcademico {
             }
             //se o aluno nao tem a quantidade minima de creditos nao matricula em nenhuma das disciplinas
              catch(CargaHorariaExcedidaException m){
+                aluno.setCreditoAtual(-aluno.getCreditoAtual());
                 System.out.println(m.getMessage());
+                 resultado.setTurmasAceitas(List.of());
+                 for(Turma turma : aluno.getPlanejamento()) {
+                     resultado.getTurmasRejeitadas().put(turma, new CargaHorariaExcedidaException("Carga horaria minima não cumprida!"));
+                 }
+                 return resultado;
             }
-            finally {
-                resultado.setTurmasAceitas(turmasCadastradas);
-                resultado.setTurmasRejeitadas(turmasRejeitadas);
+            resultado.setTurmasAceitas(turmasCadastradas);
+            resultado.setTurmasRejeitadas(turmasRejeitadas);
 
-                turmasCadastradas.clear();
-                turmasRejeitadas.clear();
+            turmasCadastradas.clear();
+            turmasRejeitadas.clear();
 
-            }
+
         }
     return resultado;
     }
