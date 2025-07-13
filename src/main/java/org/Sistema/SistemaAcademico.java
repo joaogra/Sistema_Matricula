@@ -6,6 +6,7 @@ import org.Disciplinas.DisciplinaCursada;
 import org.Exceptions.*;
 import org.Turma.DiaSemana;
 import org.Turma.Turma;
+import org.Validadores.ValidadorCorrequisitos;
 
 import javax.xml.transform.Result;
 import java.util.ArrayList;
@@ -34,7 +35,17 @@ public class SistemaAcademico {
             }
         }
     }
+    private void verificaCorequisitoRejeitado(Map<Turma, Exception> turmasRejeitadas, Disciplina coRequisito)
+            throws CoRequisitoNaoAtendidoException {
 
+        if (coRequisito == null) return;
+
+        for (Turma turma : turmasRejeitadas.keySet()) {
+            if (turma.getDisciplina().getCodigo().equals(coRequisito.getCodigo())) {
+                throw new CoRequisitoNaoAtendidoException("Co-requisito " + coRequisito.getNome() + " foi rejeitado!");
+            }
+        }
+    }
     public ResultadoMatricula matricula(List<Aluno> alunos) {
         ResultadoMatricula resultado = new ResultadoMatricula();
         List <Turma> turmasCadastradas;
@@ -48,6 +59,7 @@ public class SistemaAcademico {
 
                         //valida se e possivel matricular
                         disciplina.validarTodos(aluno, disciplina);
+                        verificaCorequisitoRejeitado(turmasRejeitadas, disciplina.getCoRequisito());
                         verificaHorario(turmasCadastradas, turma);
                         turma.verificaVagasDisponiveis();
                         aluno.verificaCargaMaxima(disciplina.getCargaHoraria());
@@ -85,7 +97,30 @@ public class SistemaAcademico {
                             turmasRejeitadas.put(turma, che);
                         }
                     }
-
+                    catch(CoRequisitoNaoAtendidoException cr){
+                        if(disciplina.getCoRequisito() != null) {
+                            for (Turma turmaAceitada : turmasCadastradas) {
+                                if (turmaAceitada.getDisciplina().getCodigo().equals(disciplina.getCoRequisito().getCodigo())) {
+                                    turmasCadastradas.remove(turmaAceitada);
+                                    turmasRejeitadas.put(turmaAceitada, cr);
+                                    break;
+                                }
+                            }
+                        }
+                        turmasRejeitadas.put(turma, cr);
+                    }
+                    catch (TurmaCheiaException tc){
+                        if(disciplina.getCoRequisito() != null){
+                            for(Turma turmaAceitada : turmasCadastradas){
+                                if(turmaAceitada.getDisciplina().getCodigo().equals(disciplina.getCoRequisito().getCodigo())){
+                                    turmasCadastradas.remove(turmaAceitada);
+                                    turmasRejeitadas.put(turmaAceitada, new CoRequisitoNaoAtendidoException("o aluno nao possui o corequisito!"));
+                                    break;
+                                }
+                            }
+                        }
+                        turmasRejeitadas.put(turma, tc);
+                    }
                     catch(MatriculaException e){
                         turmasRejeitadas.put(turma, e);
                     }
