@@ -14,7 +14,8 @@ public class ValidadorAnd implements ValidadorPreRequisito{
         for (Disciplina preRequisito : disciplina.getPreRequisitos()) {
             boolean aprovado = false;
             for (DisciplinaCursada disciplinaCursada : aluno.getDisciplinasCursadas()) {
-                if (disciplinaCursada.getDisciplina().getCodigo().equals(preRequisito.getCodigo()) && disciplinaCursada.getNota() >= 60) {
+                if (disciplinaCursada.getDisciplina().getCodigo().equals(preRequisito.getCodigo())
+                        && disciplinaCursada.getNota() >= 60) {
                     aprovado = true;
                     break; // achou, não precisa procurar mais
                 }

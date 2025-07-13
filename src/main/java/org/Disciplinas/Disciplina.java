@@ -58,6 +58,7 @@ public abstract class Disciplina {
         }
 
     }
+
     public void validarTodos(Aluno aluno, Disciplina disciplina) throws MatriculaException {
         for(ValidadorPreRequisito validador : validadores){
             validador.validar(aluno,disciplina);

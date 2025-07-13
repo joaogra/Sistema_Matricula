@@ -23,27 +23,44 @@ class SistemaAcademicoTest {
     @BeforeEach
 
     public void inicializa(){
-        aluno1 = new Aluno("João Victor", "202465045", List.of(new DisciplinaCursada(banco.getListaDisciplinas().get("DCC199"), 63), new DisciplinaCursada(banco.getListaDisciplinas().get("DC5199"), 62)), 10, 1, List.of(banco.getListaDisciplinas().get("MAT155").getTurmas().getFirst(), banco.getListaDisciplinas().get("QUI126").getTurmas().getFirst(), banco.getListaDisciplinas().get("MAT156").getTurmas().getFirst()));
-//        aluno2 = new Aluno("Maria", "1234", List.of(new DisciplinaCursada(banco.getListaDisciplinas().get("DCC199"), 63), new DisciplinaCursada(banco.getListaDisciplinas().get("DC5199"), 62)), 10, 1, List.of(banco.getListaDisciplinas().get("MAT155").getTurmas().getFirst(), banco.getListaDisciplinas().get("QUI126").getTurmas().getFirst(), banco.getListaDisciplinas().get("MAT156").getTurmas().getFirst()));
-//        aluno3 = new Aluno("Victor", "2056589", List.of(new DisciplinaCursada(banco.getListaDisciplinas().get("DCC199"), 63), new DisciplinaCursada(banco.getListaDisciplinas().get("DC5199"), 62)), 10, 1, List.of(banco.getListaDisciplinas().get("MAT155").getTurmas().getFirst(), banco.getListaDisciplinas().get("QUI126").getTurmas().getFirst(), banco.getListaDisciplinas().get("MAT156").getTurmas().getFirst()));
-//        aluno4 = new Aluno("Aluno4", "2056589", List.of(new DisciplinaCursada(banco.getListaDisciplinas().get("DCC199"), 63), new DisciplinaCursada(banco.getListaDisciplinas().get("DC5199"), 62)), 10, 1, List.of(banco.getListaDisciplinas().get("MAT155").getTurmas().getFirst(), banco.getListaDisciplinas().get("QUI126").getTurmas().getFirst(), banco.getListaDisciplinas().get("FIS122").getTurmas().getFirst()));
-//        aluno5 = new Aluno("Gleiph", "1212121", List.of(), 10, 0, List.of(banco.getListaDisciplinas().get("DC5199").getTurmas().getFirst(),banco.getListaDisciplinas().get("DCC199").getTurmas().getFirst() ));
-          aluno2 = new Aluno("Conf Horario", "123131", List.of(), 10, 0, List.of(banco.getListaDisciplinas().get("ICE001").getTurmas().getFirst(), banco.getListaDisciplinas().get("FIS122").getTurmas().getLast()));
-          aluno3 = new Aluno("Jairo", "2313154", List.of(new DisciplinaCursada(banco.getListaDisciplinas().get("MAT154"), 63), new DisciplinaCursada(banco.getListaDisciplinas().get("EST028"),61)), 10, 1, List.of(banco.getListaDisciplinas().get("QUI125").getTurmas().getFirst(), banco.getListaDisciplinas().get("DCC073").getTurmas().getLast()));
-          aluno4 = new Aluno("Cleiton", "1654686", List.of(new DisciplinaCursada(banco.getListaDisciplinas().get("MAT156"),80), new DisciplinaCursada(banco.getListaDisciplinas().get("DCC199"),90)), 10, 1, List.of(banco.getListaDisciplinas().get("DCC191").getTurmas().getFirst(), banco.getListaDisciplinas().get("UNI015").getTurmas().getFirst()));
-          aluno5 = new Aluno("Jailson", "215464", List.of(), 10, 2, List.of(banco.getListaDisciplinas().get("MAT154").getTurmas().getFirst(), banco.getListaDisciplinas().get("MAT155").getTurmas().getFirst(), banco.getListaDisciplinas().get("QUI125").getTurmas().getFirst(), banco.getListaDisciplinas().get("ICE001").getTurmas().getFirst()));
-          siga = new SistemaAcademico();
+        aluno1 = new Aluno ("Gleiph", "12345679", List.of(new DisciplinaCursada(banco.getListaDisciplinas().get("DCC199"),100), new DisciplinaCursada(banco.getListaDisciplinas().get("DC5199"),75),
+            new DisciplinaCursada(banco.getListaDisciplinas().get("ICE001"),61), new DisciplinaCursada(banco.getListaDisciplinas().get("QUI125"),70), new DisciplinaCursada(banco.getListaDisciplinas().get("MAT154"),72),
+            new DisciplinaCursada(banco.getListaDisciplinas().get("MAT155"),40)), 25, 5,
+            List.of(banco.getListaDisciplinas().get("MAT156").getTurmas().getFirst(), banco.getListaDisciplinas().get("FIS073").getTurmas().getFirst(), banco.getListaDisciplinas().get("EST028").getTurmas().getFirst(), banco.getListaDisciplinas().get("DCC200").getTurmas().getFirst(), banco.getListaDisciplinas().get("DCC122").getTurmas().getFirst(), banco.getListaDisciplinas().get("MAT143").getTurmas().getFirst(),
+                    banco.getListaDisciplinas().get("MAT155").getTurmas().get(1)));
+
+      aluno2 = new Aluno("Gilson", "123131", List.of(), 10, 0,
+              List.of(banco.getListaDisciplinas().get("ICE001").getTurmas().getFirst(),
+                      banco.getListaDisciplinas().get("FIS122").getTurmas().getLast()));
+
+      aluno3 = new Aluno("João Victor", "2313154", List.of(new DisciplinaCursada(banco.getListaDisciplinas().get("MAT154"), 63),
+              new DisciplinaCursada(banco.getListaDisciplinas().get("EST028"),61)), 10, 1,
+              List.of(banco.getListaDisciplinas().get("QUI125").getTurmas().getFirst(), banco.getListaDisciplinas().get("DCC073").getTurmas().getLast()));
+
+      aluno4 = new Aluno("Cleiton", "1654686", List.of(new DisciplinaCursada(banco.getListaDisciplinas().get("MAT156"),80),
+              new DisciplinaCursada(banco.getListaDisciplinas().get("DCC199"),90)), 10, 1,
+              List.of(banco.getListaDisciplinas().get("DCC191").getTurmas().getFirst(),
+                      banco.getListaDisciplinas().get("UNI015").getTurmas().getFirst()));
+
+      aluno5 = new Aluno("Jailson", "215464", List.of(), 10, 2,
+              List.of(banco.getListaDisciplinas().get("MAT154").getTurmas().getFirst(), banco.getListaDisciplinas().get("MAT155").getTurmas().getFirst(),
+                      banco.getListaDisciplinas().get("QUI125").getTurmas().getFirst(), banco.getListaDisciplinas().get("ICE001").getTurmas().getFirst()));
+      siga = new SistemaAcademico();
     }
 
     @Test
     public void testaMatricula() {
-        ResultadoMatricula res = new ResultadoMatricula();
+        ResultadoMatricula res;
         res = siga.matricula(List.of(aluno1));
-
         //verifica se as turmas que foram matriculadas sao as mesmas que as esperadas
-        assertEquals(List.of(banco.getListaDisciplinas().get("MAT155").getTurmas().getFirst(), banco.getListaDisciplinas().get("QUI126").getTurmas().getFirst()), res.getTurmasAceitas());
+        assertEquals(List.of(banco.getListaDisciplinas().get("FIS073").getTurmas().getFirst(), banco.getListaDisciplinas().get("EST028").getTurmas().getFirst()), res.getTurmasAceitas());
         //verifica se as turmas que foram rejeitadas sao as mesmas que as esperadas
-        assertEquals(Set.of(banco.getListaDisciplinas().get("MAT156").getTurmas().getFirst()),res.getTurmasRejeitadas().keySet());
+       assertEquals(Set.of(banco.getListaDisciplinas().get("MAT155").getTurmas().get(1),
+                        banco.getListaDisciplinas().get("DCC122").getTurmas().getFirst(),
+                        banco.getListaDisciplinas().get("DCC200").getTurmas().getFirst(),
+                        banco.getListaDisciplinas().get("MAT143").getTurmas().getFirst(),
+                        banco.getListaDisciplinas().get("MAT156").getTurmas().getFirst()),
+                res.getTurmasRejeitadas().keySet());
     }
 
     @Test
@@ -51,7 +68,8 @@ class SistemaAcademicoTest {
     public void testaConflitoHorarioMesmaPrecedencia(){
         ResultadoMatricula res;
         res = siga.matricula(List.of(aluno2));
-        assertEquals(Set.of(banco.getListaDisciplinas().get("FIS122").getTurmas().getLast(), banco.getListaDisciplinas().get("ICE001").getTurmas().getFirst()), res.getTurmasRejeitadas().keySet());
+        assertEquals(Set.of(banco.getListaDisciplinas().get("FIS122").getTurmas().getLast(),
+                banco.getListaDisciplinas().get("ICE001").getTurmas().getFirst()), res.getTurmasRejeitadas().keySet());
 
     }
 
@@ -81,7 +99,10 @@ class SistemaAcademicoTest {
     public void testaSeACargaHorariaFoiExcedida(){
         ResultadoMatricula res;
         res = siga.matricula(List.of(aluno5));
-        assertEquals(List.of(banco.getListaDisciplinas().get("MAT154").getTurmas().getFirst(), banco.getListaDisciplinas().get("MAT155").getTurmas().getFirst(),banco.getListaDisciplinas().get("ICE001").getTurmas().getFirst()), res.getTurmasAceitas());
+
+        assertEquals(List.of(banco.getListaDisciplinas().get("MAT154").getTurmas().getFirst(), banco.getListaDisciplinas().get("MAT155").getTurmas().getFirst(),
+                banco.getListaDisciplinas().get("ICE001").getTurmas().getFirst()), res.getTurmasAceitas());
+
         assertEquals(Set.of(banco.getListaDisciplinas().get("QUI125").getTurmas().getFirst()),res.getTurmasRejeitadas().keySet());
     }
 

@@ -34,10 +34,10 @@ public class CriaDados {
         listaDisciplinas.put("QUI125",QuimicaF);
         Disciplina LabQuim = new DisciplinaObrigatoria("Laboratório de Quimica", "QUI126", 2, new ArrayList<Disciplina>(), new DisciplinaObrigatoria());
         listaDisciplinas.put("QUI126",LabQuim);
-        Disciplina AlgoritmoII = new DisciplinaObrigatoria("AlgoritmoII", "DCC200" , 4, List.of(algoritmo, algoritmo), new DisciplinaObrigatoria());
-        listaDisciplinas.put("DCC200",AlgoritmoII);
-        Disciplina AlgoritmoIIPratica = new DisciplinaObrigatoria("Algoritmo II Pratica ", "DC5200", 2, List.of(algoritmoPratica), AlgoritmoII);
+        Disciplina AlgoritmoIIPratica = new DisciplinaObrigatoria("Algoritmo II Pratica ", "DC5200", 2, List.of(algoritmoPratica), new DisciplinaObrigatoria());
         listaDisciplinas.put("DC5200",AlgoritmoIIPratica);
+        Disciplina AlgoritmoII = new DisciplinaObrigatoria("AlgoritmoII", "DCC200" , 4, List.of(algoritmo, algoritmo), AlgoritmoIIPratica);
+        listaDisciplinas.put("DCC200",AlgoritmoII);
         Disciplina IntroEstatistica = new DisciplinaObrigatoria("Introdução à Estatística", "EST028", 4, List.of(Calculo1), new DisciplinaObrigatoria());
         listaDisciplinas.put("EST028",IntroEstatistica);
         Disciplina FisicaI = new DisciplinaObrigatoria("FisicaI", "FIS073", 4, List.of(Calculo1), new DisciplinaObrigatoria());

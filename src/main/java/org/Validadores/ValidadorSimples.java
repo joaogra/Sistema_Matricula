@@ -9,7 +9,8 @@ public class ValidadorSimples implements ValidadorPreRequisito {
     @Override
     public void validar(Aluno aluno, Disciplina disciplina) throws PreRequisitoNaoCumpridoException {
         for(DisciplinaCursada dC : aluno.getDisciplinasCursadas()){
-            if(dC.getDisciplina().getCodigo().equals(disciplina.getPreRequisitos().getFirst().getCodigo()) && dC.getNota() >= 60){//Verifica se o aluno tem o pré-requisito
+            if(dC.getDisciplina().getCodigo().equals(disciplina.getPreRequisitos().getFirst().getCodigo())
+                    && dC.getNota() >= 60){//Verifica se o aluno tem o pré-requisito
                 return;
             }
         }

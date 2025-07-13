@@ -13,7 +13,9 @@ public class ValidadorOr implements ValidadorPreRequisito {
 
         for(Disciplina preRequisito : disciplina.getPreRequisitos()){
             for(DisciplinaCursada disciplinaCursada : aluno.getDisciplinasCursadas()){
-                if(disciplinaCursada.getDisciplina().getCodigo().equals(preRequisito.getCodigo()) && disciplinaCursada.getNota() >= 60){//Verifica se o aluno tem o pré-requisito
+                //Verifica se o aluno tem o pré-requisito
+                if(disciplinaCursada.getDisciplina().getCodigo().equals(preRequisito.getCodigo())
+                        && disciplinaCursada.getNota() >= 60){
                     return;
                 }
             }
