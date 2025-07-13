@@ -17,14 +17,11 @@
 
 <build>
     <plugins>
-        <!-- Compilador Java -->
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.8.1</version>
         </plugin>
-
-        <!-- Gerador de .jar executável -->
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-jar-plugin</artifactId>
