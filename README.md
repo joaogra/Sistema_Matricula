@@ -22,6 +22,6 @@ O foco do projeto é validar **lógica de negócios** e **testes automatizados**
 - **JUnit 5** (testes automatizados)  
 - **Collections Framework** (listas, mapas)  
 - **Programação Orientada a Objetos (POO)**  
-- **Git / GitHub**
+
 
 ---
